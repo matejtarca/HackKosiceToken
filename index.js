@@ -118,11 +118,18 @@ app.post('/send', async function (req, res) {
 		if(parseInt(req.body.amount) < parseInt(balance)){
 			if(req.body.name !== user.username){
 				console.log(dcoreApi.accountApi.getAllByNames)
-				if(true){
-					Transfer(id, req.body.amount, user.username, user.private_key);
-					var balance = await Balance(await GetIdFromName(user.username));
-				} else {
-					res.render('home', {message: "The receiver does not exist", username: req.session.username, balance: balance, type: user.type, badges: user.badges})
+				var s = database[get_index(req.body.name)].type;
+				if (s == '1') {
+					if(true){
+
+						Transfer(id, req.body.amount, user.username, user.private_key);
+						var balance = await Balance(await GetIdFromName(user.username));
+					} else {
+						res.render('home', {message: "The receiver does not exist", username: req.session.username, balance: balance, type: user.type, badges: user.badges})
+					}
+				}
+				else {
+					res.render('home', {message: "The receiver is not a bussiness", username: req.session.username, balance: balance, type: user.type, badges: user.badges})
 				}
 			} else {
 				res.render('home', {message: "You cannot send KHT to yourself", username: req.session.username, balance: balance, type: user.type, badges: user.badges})
