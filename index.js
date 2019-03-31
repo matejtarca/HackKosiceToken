@@ -1,4 +1,5 @@
 require("reflect-metadata")
+const qrcode = require('qrcode');
 
 var http = require('http');
 const WebSocket = require('ws');
@@ -6,6 +7,8 @@ const { AssetAmount, ChainObject, Credentials, DCoreSdk, OperationHistory, Trans
 
 const dcoreApi = DCoreSdk.createForWebSocket(() => new WebSocket("wss://testnet-api.dcore.io"));
 var creds = new Credentials(ChainObject.parse("1.2.41"), '5JKudCkXzMrkXmQiVwdG4ntgkCqmxi9wSfS5HU3HryvNCk1bjNN');
+
+const region_id = '1.2.50';
 
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -44,7 +47,7 @@ app.get('/home', async function (request, response) {
     	var id = await GetIdFromName(name);
 		var balance = await Balance(id);
 		user.badges = await UpdateBadges(name);
-		response.render('home', {username: name, balance: balance, type: user.type, badges: user.badges});
+		response.render('home', {message:"", username: name, balance: balance, type: user.type, badges: user.badges});
 	} else {
 		response.redirect('/');
 	}
@@ -110,20 +113,47 @@ app.post('/send', async function (req, res) {
 	if (req.session.loggedin) {
 		var user = database[get_index(req.session.username)];
 		var id = await GetIdFromName(req.body.name);
-		var balance = await Balance(await GetIdFromName(user.username))
-		if(parseInt(req.body.amount) < parseInt(balance) && req.body.name !== user.username){
-			try{
-				Transfer(id, req.body.amount, user.username, user.private_key);
-			} finally{
-				1
+		var balance = await Balance(await GetIdFromName(user.username));
+		user.badges = await UpdateBadges(req.session.username);
+		if(parseInt(req.body.amount) < parseInt(balance)){
+			if(req.body.name !== user.username){
+				console.log(dcoreApi.accountApi.getAllByNames)
+				if(true){
+					Transfer(id, req.body.amount, user.username, user.private_key);
+					var balance = await Balance(await GetIdFromName(user.username));
+				} else {
+					res.render('home', {message: "The receiver does not exist", username: req.session.username, balance: balance, type: user.type, badges: user.badges})
+				}
+			} else {
+				res.render('home', {message: "You cannot send KHT to yourself", username: req.session.username, balance: balance, type: user.type, badges: user.badges})
 			}
 		} else {
-			console.log('nnei dost')
+			res.render('home', {message: "Insufficient funds on your account", username: req.session.username, balance: balance, type: user.type, badges: user.badges})
 		}
 		res.redirect('/home');
 	} else {
 		res.redirect('/');
 	}
+})
+
+app.post('/bonus', async function(req, res) {
+	if (req.session.loggedin) {
+	var user = database[get_index(req.session.username)];
+	var amount = 0;
+	if (req.body.bonus == '5% OFF') {
+		amount = "50";
+	}
+	if (req.body.bonus == '10% OFF') {
+		amount = "500";
+	}
+
+	var transaction_id = await Transfer(region_id, amount, user.username, user.private_key);
+	var qr = await qrcode.toDataURL(transaction_id);
+	res.render('bonus', {trans_id: transaction_id, qrcode: qr});
+}
+else {
+	res.redirect('/');
+}
 })
 
 app.listen(8080, '0.0.0.0', function () {
@@ -142,7 +172,7 @@ async function UpdateBadges(name) {
 		}
 	}
 	if(total_tabacka > 499){
-		badges[3] = 1
+		badges[3] = 1;
 	}
 	return badges;
 }
@@ -213,27 +243,8 @@ function History(id) {
 async function Transfer(id, amount, username, key) {
 	var user_id = await GetIdFromName(username);
 	var creds = new Credentials(ChainObject.parse(user_id), key);
-	dcoreApi.accountApi.transfer(creds, id, new AssetAmount(amount, ChainObject.parse("1.3.33"))).subscribe(value => console.log(value));
+	console.log(creds, id);
+	var transfer = await dcoreApi.accountApi.transfer(creds, id, new AssetAmount(amount, ChainObject.parse("1.3.33"))).toPromise();
+	
+	return transfer.id;
 }
-
-
-/*
-http.createServer(async function (req, res) {
-  var response = await History();
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write(response[0].op[0].toString())
-  res.end('success');
-}).listen(8080); 
-
-
-console.log('Server started'); */
-
-
-/*
-dcoreApi.accountApi.transfer(creds, "1.2.41", new AssetAmount(5), "x")
-	.subscribe((value) => {
-		console.log(value);
-	});
-
-const account = await dcoreApi.accountApi.getByName('decent').toPromise();
-*/

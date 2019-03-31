@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>KHT - history</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+        <p class='KSK'>KSK</p>
+        <form method='POST' action='/home' class='top_menu'>
+
+        <input type='submit' class='logout' value='Logout' />
+        <a href='/' class='logout'>Home</a>
+        </form>
+        
+        <div class='content2'>
+        <div class='bonus_content2'>
+            <h1 class='bonus_title'>Your bonus was applied succesfully</h1>
+            <p class='trans_id'>Transaction Id: <%= trans_id %></p>
+            <img src="<%= qrcode %>" class='qrcode'/>
+        </div>
+        </div>
+    </body>
+</html>

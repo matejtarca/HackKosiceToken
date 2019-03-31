@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Login Form Tutorial</title>
+		<title>KHT - profile</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
@@ -24,16 +24,16 @@
     	</h2>
         <div class='bonus'>
         	<h1 class='name'>Bonus</h1>
-        	<from method='POST' action='/bonus' class='bonus_form'>
+        	<form method='POST' action='/bonus' class='bonus_form'>
         	<div class='bonus_content'>
         		<input type='submit' value='5% OFF' name='bonus' class='button_pay'/>
-        		<p>50 KTH</p>
+        		<p>50 KHT</p>
         	</div>
         	<div class='bonus_content'>
         		<input type='submit' value='10% OFF' name='bonus' class='button_pay'/>
-        		<p>500 KTH</p>
+        		<p>500 KHT</p>
         	</div>
-	        </from>
+	        </form>
         </div>
         <h1 class='Badges_title'>Badges</h1>
         <center>
@@ -65,7 +65,7 @@
         <div class='right_content'>
             <div class='balance_content'>
         <h1 class='Balance_title'>Balance</h1>
-        <h2 class='balance'><%= balance %> KTH</h2>
+        <h2 class='balance'><%= balance %> KHT</h2>
         <a class='history_link' href='/history'>History</a>
     </div>
 
@@ -78,7 +78,8 @@
                 <label class='label' for='name'>to</label>
                 <input class='input_text pass padd' type="text" name="name" placeholder="dw name" required>
             </div>
-                <input type="submit" class='button_pay padd' value='Pay'>
+            	<div style="color:red; font-size: 1.5em;"><%= message %></div>
+                <input type="submit" class='button_pay padd' value='Pay'>  	
             </form>
         </div>
         </div>
