@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>KHT-history</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+        <p class='KSK'>KSK
+        <% if (logged) { %>
+        <form method='POST' action='/home'>
+
+        <input type='submit' class='logout' value='Logout' />
+        <% } %>
+        <a href='/' class='logout'>Home</a>
+    </form>
+        </p>
+        <div class='content'>
+        <div class='left_content_leading'>
+            <div class='leading_content'>
+        <h1 class='leading_title'>Leading KHT services</h1>
+        <ul class='leading_list'>
+        	<li><div class='li-item'><div>1# dw-tabacka</div><div class='left_margin'>1200 KHT</div></div></li>
+        	<li><div class='li-item'><div>2# dw-hackathon</div><div class='left_margin'>895 KHT</div></div></li>
+        	<li><div class='li-item'><div>3# dw-tatrabanka</div><div class='left_margin'>500 KHT</div></div></li>
+        	<li><div class='li-item'><div>4# dw-generali</div><div class='left_margin'>140 KHT</div></div></li>	
+        </ul>
+
+    </div>
+    </div>
+        <div class='right_content'>
+            
+        <form action="/history" method="POST" class='form'>
+            <div>
+                <label class='label' for='name'>Name</label>
+                <input class='input_text pass padd' type="text" name="name" placeholder="dw name" value="<%= username %>" required>
+            </div>
+                <input type="submit" class='button_pay padd' value='Check'>
+            </form>
+        <center><h1 class='Balance_title'>Balance: <%= balance %> KHT</h1>
+    	<ul class='leading_list'>
+    		<% if (history !== null) { %>
+    		<% for (var i = 0; i < history.length; i++) { %>
+    			<% if (history[i][2] == '0') { %>
+    				<li><div class='li-item'><div>From <%= history[i][0] %></div><div class='left_margin green'><%= history[i][1] %> KHT</div></div></li>
+    			<% } else { %>
+    			<li><div class='li-item '><div>To <%= history[i][0] %></div><div class='left_margin red'><%= history[i][1] %> KHT</div></div></li>
+    			<% } %>
+    		<% } %>
+    		<% } %>
+    		<!-- 
+        	<li><div class='li-item'><div>1# dw-tabacka</div><div class='left_margin'>0.00 KHT</div></div></li>
+        	<li><div class='li-item'><div>1# dw-tabacka</div><div class='left_margin'>0.00 KHT</div></div></li>
+        	<li><div class='li-item'><div>1# dw-tabacka</div><div class='left_margin'>0.00 KHT</div></div></li>
+        	<li><div class='li-item'><div>1# dw-tabacka</div><div class='left_margin'>0.00 KHT</div></div></li>	-->
+        </ul>
+    </center>
+        </div>
+    </body>
+</html>

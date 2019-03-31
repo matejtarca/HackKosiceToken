@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+    height: 100%;
+    background: #303943;
+    font-family: 'Open Sans';
+}
+
+.logout {
+	border: none;
+	background: none;
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+	cursor: pointer;
+	padding: 10px;
+	text-decoration: none;
+
+}
+
+.content {
+    display: flex;
+    height: 100vh;
+}
+
+.bonus_content {
+	display: flex;
+	align-items: center;
+}
+
+.bonus_content p {
+	margin: 20px;
+	margin-left: auto;
+	color: white;
+	font-size: 30px;
+}
+
+.KSK {
+    width: 31px;
+
+    height: 18px;
+
+
+    font-size: 17px;
+  
+    font-weight: bold;
+  
+    font-style: normal;
+  
+    font-stretch: normal;
+  
+    line-height: normal;
+  
+    letter-spacing: -1.2px;
+  
+    color: white;
+    position: absolute;
+    top: 60px;
+    left: 70px;
+
+}
+
+.KSK_token {
+    width: 323px;
+
+    height: 270px;
+  
+  
+    font-size: 90px;
+  
+    font-weight: bold;
+  
+    font-style: normal;
+  
+    font-stretch: normal;
+  
+    line-height: 1;
+  
+    letter-spacing: -1.2px;
+  
+    color: white;
+
+    font-weight: bold;
+}
+
+.token {
+    width: 50vw;
+    display: grid;
+    place-items: center;
+}
+
+.button_sign_in {
+    width: 179px;
+
+    height: 56px;
+
+    border: none;
+  
+    border-radius: 100px;
+  
+    background-image: linear-gradient(287deg, #841280, #f06b3b);
+
+    font-size: 24px;
+  parse
+    font-weight: bold;
+  
+    font-style: normal;
+  
+    font-stretch: normal;
+  
+    line-height: 0.63;
+  
+    letter-spacing: 0.6px;
+  
+    text-align: center;
+  
+    color: white;
+
+    cursor: pointer;
+}
+
+.input_text {
+
+    font-size: 32px;
+  
+    font-weight: normal;
+  
+    font-style: normal;
+  
+    font-stretch: normal;
+  
+    line-height: 1.5;
+  
+    letter-spacing: normal;
+  
+    color: white;
+    background: none;
+    border: none;
+    border-bottom: solid 4px #80cbc4;
+}
+
+.pass {
+    border-bottom: solid 4px #ff6e6e;
+}
+
+.sign_up {
+    width: 79px;
+
+    height: 29px;
+  
+    font-size: 18px;
+  
+    font-weight: bold;
+  
+    font-style: normal;
+  
+    font-stretch: normal;
+  
+    line-height: normal;
+  
+    letter-spacing: 0.6px;
+  
+    color: white;
+
+    text-decoration: none;
+}
+
+.form_whole {
+    display: grid;
+    place-items: center;
+}
+
+.form {
+    display: grid;
+    place-items: center;
+}
+
+.padd {
+    margin: 30px;
+}
+
+
+
+.name {
+    width: 436px;
+
+    height: 52.5px;
+  
+  
+    font-size: 45px;
+  
+    font-weight: bold;
+  
+    font-style: normal;
+  
+    font-stretch: normal;
+  
+    line-height: 1.17;
+  
+    letter-spacing: 0.3px;
+  
+    color: white;
+}
+
+.status {
+
+    height: 33px;
+  
+    font-size: 25.5px;
+  
+    font-weight: 500;
+  
+    font-style: normal;
+  
+    font-stretch: normal;
+  
+    line-height: 1.29;
+  
+    letter-spacing: 0.9px;
+  
+    color: #ff6e6e;
+}
+
+.text {
+    width: 390px;
+
+    height: 132px;
+  
+    font-size: 25.5px;
+  
+    font-weight: 500;
+  
+    font-style: normal;
+  
+    font-stretch: normal;
+  
+    line-height: 1.29;
+  
+    letter-spacing: 0.9px;
+  
+    color: white;
+}
+
+.Badges_title {
+    text-align: center;
+
+    width: 100%;
+
+    height: 53px;
+  
+    font-size: 45px;
+  
+    font-weight: bold;
+  
+    font-style: normal;
+  
+    font-stretch: normal;
+  
+    line-height: 1.17;
+  
+    letter-spacing: 0.3px;
+  
+    color: white;
+
+    margin-top: 100px;
+}
+
+.Balance_title {
+
+    height: 72px;
+  
+    font-size: 45px;
+  
+    font-weight: bold;
+  
+  
+    letter-spacing: 0.9px;
+  
+
+    color: white;
+}
+
+.badge_img {
+	width: 100px;
+}
+
+.badges {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-row-gap: 20px;
+}
+
+.balance {
+
+    height: 72px;
+  
+    font-size: 45px;
+  
+    font-weight: 500;
+  
+    letter-spacing: 0.9px;
+
+    color: white;
+}
+
+.history_link {
+    display: block;
+    width: 161px;
+    padding: 20px 0;
+  
+    border-radius: 100px;
+  
+    background-color: white;
+
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+  
+    letter-spacing: 0.6px;
+    text-align: center;
+  
+    color: #2a3540;
+  
+    color: #2a3540;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.label {
+    display: inline-block;
+    font-size: 36px;
+
+    font-weight: 500;
+  
+    font-style: normal;
+  
+    font-stretch: normal;
+  
+    line-height: normal;
+  
+    letter-spacing: 0.6px;
+  
+    color: white;
+}
+
+.button_pay {
+    width: 161px;
+
+    height: 50px;
+  
+    border-radius: 100px;
+  
+    background-color:white;
+    font-size: 24px;
+
+    font-weight: bold;
+  
+    font-style: normal;
+  
+    font-stretch: normal;
+  
+    line-height: normal;
+  
+    letter-spacing: 0.6px;
+  
+    text-align: center;
+  
+    color: #2a3540;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+.left_content {
+    width: 50vw;
+    display: grid;
+    place-items: center;
+}
+
+.right_content {
+    padding: 50px;
+}
+
+.balance_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.leading_list {
+	color: white;
+	list-style-type: none;
+	margin: none;
+	padding: none;
+}
+
+.leading_list li {
+	margin: none;
+	padding: 30px 0 10px 0;
+	border-bottom: solid 4px #80cbc4;
+	font-size: 30px;
+	width: 30vw; 
+}
+
+.li-item {
+	display: flex;
+}
+
+.left_margin {
+	margin-left: auto;
+}
+
+.leading_title {
+	color: white;
+}
+
+.leading_content {
+	text-align: center;
+}
+
+.left_content_leading {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 10vh;
+	width: 50vw;
+}
+
+.green {
+	color: lime;
+}
+
+.red {
+	color: red;
+}
